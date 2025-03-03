@@ -1,0 +1,8 @@
+canvas {
+  border: 2px solid #000; /* Schwarze Umrandung */
+  display: block;
+  margin: 20px auto; /* Zentrieren des Canvas auf der Seite */
+  background-color: #f5f5f5; /* Optional: Hintergrundfarbe für besseres Sichtbarkeit */
+  width: 50%;
+  height: 50%;
+}
