@@ -1,6 +1,41 @@
-<h1>Drawing Fractals</h1>
-<input type="text" [(ngModel)]="userFunction" placeholder="Funktion eingeben (z. B. x+y, y-x)">
-<button (click)="applyUserFunction()">Zeichnen</button>
-<canvas id="fractalsCanvas"></canvas>
+<h1 style="margin-left: 10px">Drawing Fractals</h1>
+
+<!-- Dropdown zur Auswahl des Algorithmus -->
+<select [(ngModel)]="selectedAlgorithm" (change)="onAlgorithmChange($event)" style="margin-left: 10px">
+  <option *ngFor="let opt of getDropdownOptions()" [value]="opt.value">
+    {{ opt.label }}
+  </option>
+</select>
+
+<!-- Je nach Auswahl unterschiedliche Eingabefelder anzeigen -->
+<div *ngIf="selectedAlgorithm === 'koch'" style="padding: 10px">
+  <label>Koch-Parameter:</label>
+  <input type="number" [(ngModel)]="kochParam" placeholder="Tiefe/Länge" style="margin-left: 10px">
+</div>
+
+<div *ngIf="selectedAlgorithm === 'circle'" style="padding: 10px">
+  <label>Circle Radius:</label>
+  <input type="number" [(ngModel)]="circleRadius" placeholder="Start-Radius" style="margin-left: 10px">
+</div>
+
+<div *ngIf="selectedAlgorithm === 'barnsley'" style="padding: 10px">
+  <label>Barnsley-Parameter:</label>
+  <input type="number" [(ngModel)]="barnsleyParam" placeholder="Parameter">
+</div>
+
+<div *ngIf="selectedAlgorithm === 'ellipse'" style="padding: 10px">
+  <label style="padding-right: 10px">Ellipse Parameters:</label>
+  <input type="number" [(ngModel)]="ellipseHeight" placeholder="Start-Height" style="margin-right: 10px">
+  <input type="number" [(ngModel)]="ellipseWidth" placeholder="Start-Width">
+</div>
 
 
+<div *ngFor="let fractal of fractals" class="fractal-container">
+  <div class="circle" [ngStyle]="{'background-color': fractal.params['color']}">
+    <a>{{ fractal.algorithm }}</a>
+  </div>
+</div>
+
+
+<button (click)="applyUserFunction()" style="margin-left: 10px">Draw</button>
+<canvas id="fractalsCanvas" ></canvas>

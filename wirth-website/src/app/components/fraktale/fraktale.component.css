@@ -3,6 +3,25 @@ canvas {
   display: block;
   margin: 20px auto; /* Zentrieren des Canvas auf der Seite */
   background-color: #f5f5f5; /* Optional: Hintergrundfarbe für besseres Sichtbarkeit */
-  width: 50%;
-  height: 50%;
+  width: 75%;
+  height: 75%;
 }
+
+.fractal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;  /* Größe des Kreises */
+  height: 50px;
+  border-radius: 50%;
+  color: white;  /* Textfarbe */
+  font-weight: bold;
+}
+
